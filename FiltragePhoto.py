@@ -1,3 +1,5 @@
+import ProduitConvolution as pc
+
 from skimage.io import imread
 from skimage.io import imshow
 from skimage import exposure
@@ -5,11 +7,11 @@ import matplotlib.pyplot as plt
 import numpy as np
 import PIL
 from skimage import io
-import ProduitConvolution as pc
+
 
 
 def detectWall(image,seuil,eps):
-    # return un boolean répondant à la question suivante "Est-ce que l'image est un mur ?"
+    # return un boolean répondant à la question suivante "Est-ce que l'image est un mur ?" avec un critère basé sur la prédonminance d'une couleur
 
     n,p = np.shape(image)
 
@@ -28,27 +30,34 @@ def detectWall(image,seuil,eps):
     else :
         borneInf = iMax - eps
 
+    # Compte le nombre de pixel ayant une couleur entre [borneInf,borneSup]
     for i in range(borneInf,borneSup):
-
         compteur += count[i]
-    compteur *= 1/(n*p)
-    if compteur > seuil: # Les pixels sont quasi tous à peu près de la même couleur
+    compteur *= 1/(n*p) # Calul de la moyenne
 
+    # Critère de prédominance
+    if compteur > seuil: # Les pixels sont quasi tous à peu près de la même couleur
         return True
     else :
-
         return False
 
-def detectVar(image,seuil):
 
+
+def detectVar(image,seuil):
+    # return un boolean répondant à la question suivante "Est-ce que l'image est un mur ?" avec un critère basé sur la variance de l'image (qui est un arary)
+
+    # Critère de variance
     if np.var(image) < seuil:
 
-        return True # C'est un mur
+        return True # On considère que l'image est un mur
     else :
 
         return False
 
+
+
 def concatenation(L1,L2):
+    # Sert juste à tester le code
 
     if len(L1) == len(L2):
         res=[]
@@ -56,7 +65,10 @@ def concatenation(L1,L2):
             res.append([L1[i],L2[i]])
     return res
 
+
+
 def booleanHist(L):
+    # Permets de préparer des données pour faire un histogramme statistiques, sert seulement pour faire des tests statistiques
     # L est de la forme [[float0,boolean0],[float1,boolean1], etc.]
 
     varMaxFalse = 0

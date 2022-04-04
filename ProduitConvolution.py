@@ -7,8 +7,10 @@ import numpy as np
 import PIL
 from skimage import io
 
+
+
 def convuLocal(portionImage,filtre):
-    # portionImage est de même dimension que filtre
+    # Fait le produit le convolution entre deux matrices de mêmes dimensions
 
     n,p = np.shape(portionImage)
     somme = 0
@@ -19,27 +21,33 @@ def convuLocal(portionImage,filtre):
                 somme += filtre[i][j]*portionImage[i][j]
     return somme
 
+
+
 def convuProduct(image):
     # Dans le cas où dimFiltre = 3
 
     n,p = np.shape(image)
 
-    dimFiltre = 3
-    filtre = np.array([[-1,0,1]]*dimFiltre)
-    matrice = np.zeros((n,p))
-    halfDimFiltre = int(dimFiltre/2)
+    dimFiltre = 3                           # Filtre est de la forme :
+    filtre = np.array([[-1,0,1]]*dimFiltre) #    -1 0 1
+    matrice = np.zeros((n,p))               #    -1 0 1
+    halfDimFiltre = int(dimFiltre/2)        #    -1 0 1
 
-    for i in range(1,n-1):
+    # On applique le produit de convolution à chaque matrice extraite 3x3
+    for i in range(1,n-1): # On parcourt toute la matrice sauf les bords
         for j in range(1,p-1):
-
             portionImage=np.zeros([dimFiltre,dimFiltre])
-            for l in range(dimFiltre):
 
+            # Création de la matrice extraite
+            for l in range(dimFiltre):
                 L = image[i+halfDimFiltre-l][j-halfDimFiltre :j+halfDimFiltre +1]
                 portionImage[l]=L
 
+            # On calcule le produit de convolution entre la matrice extraite et le filtre
             resij = convuLocal(portionImage,filtre)
             matrice[i][j]+=resij
+
+    # On enlève tous les bords pour avoir une matrice de dimension (n-1)x(p-1)
     L=[]
     for i in range(1,n-1):
         L.append(matrice[i][1:-1])
