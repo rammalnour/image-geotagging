@@ -8,29 +8,6 @@ from skimage import io
 import ProduitConvolution as pc
 
 
-def imageHist(image):
-    # Génère l'histogramme d'une image
-
-    _, axis = plt.subplots(ncols=2, figsize=(12, 3))
-    if (image.ndim == 2):
-        # Grascale image
-
-        axis[0].imshow(image, cmap=plt.get_cmap('gray'))
-        axis[1].set_title('Histogram')
-        axis[0].set_title('Grayscale Image')
-        hist = exposure.histogram(image)
-        axis[1].plot(hist[0])
-    else:
-        # Color image
-
-        axis[0].imshow(image, cmap='gray')
-        axis[1].set_title('Histogram')
-        axis[0].set_title('Colored Image')
-        rgbcolors = ['red', 'green', 'blue']
-        for i, mycolor in enumerate(rgbcolors):
-            axis[1].plot(exposure.histogram(image[...,i])[0], color=mycolor)
-
-
 def detectWall(image,seuil,eps):
     # return un boolean répondant à la question suivante "Est-ce que l'image est un mur ?"
 
@@ -62,41 +39,46 @@ def detectWall(image,seuil,eps):
 
         return False
 
-def showGrey(str,convul):
-    # convul est un boolean qui permet d'afficher ou non l'histogramme de l'image filtrée
+def detectVar(image,seuil):
 
-    fig = 1
-    image = imread(str, as_gray=True)
-    plt.figure(fig)
-    imageHist(image)
-    if convul:
-        imageHist(pc.convuProduct(image))
-    plt.show()
+    if np.var(image) < seuil:
 
+        return True # C'est un mur
+    else :
 
+        return False
 
+def concatenation(L1,L2):
 
+    if len(L1) == len(L2):
+        res=[]
+        for i in range(len(L1)):
+            res.append([L1[i],L2[i]])
+    return res
 
+def booleanHist(L):
+    # L est de la forme [[float0,boolean0],[float1,boolean1], etc.]
 
+    varMaxFalse = 0
+    varMinFalse = 10
+    varMoyFalse = 0
 
+    varMaxTrue = 0
+    varMinTrue = 10
+    varMoyTrue = 0
 
+    nbr = len(L)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    for i in range(nbr):
+        if L[i][1]:
+            varMaxTrue = max(varMaxTrue,L[i][0])
+            varMinTrue = min(varMinTrue,L[i][0])
+            varMoyTrue += L[i][0]
+        else :
+            varMaxFalse = max(varMaxFalse,L[i][0])
+            varMinFalse = min(varMinFalse,L[i][0])
+            varMoyFalse += L[i][0]
+    return [varMaxTrue,varMoyTrue/nbr,varMinTrue],[varMaxFalse,varMoyFalse/nbr,varMinFalse]
 
 
 
