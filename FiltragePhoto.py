@@ -11,8 +11,13 @@ from skimage import io
 
 
 def detectWall(image,seuil,eps):
-    # return un boolean répondant à la question suivante "Est-ce que l'image est un mur ?" avec un critère basé sur la prédonminance d'une couleur
+    """
+    - image : np.ndarray
+    - seuil : float
+    - eps : float
 
+    renvoie un booleen valant True si l'image est un mur, selon un critère basé sur la prédominance d'une couleur sur les autres
+    """
     n,p = np.shape(image)
 
     # Compte le nombre de pixels qu'il y a pour chaque nuance de gris
@@ -44,33 +49,37 @@ def detectWall(image,seuil,eps):
 
 
 def detectVar(image,seuil):
-    # return un boolean répondant à la question suivante "Est-ce que l'image est un mur ?" avec un critère basé sur la variance de l'image (qui est un arary)
+    """
+    - image : np.ndarray
+    - seuil : float
 
+    renvoie un booleen valant True si l'image est un mur, selon un critère basé sur la variance de l'image
+
+    """
     # Critère de variance
     if np.var(image) < seuil:
-
         return True # On considère que l'image est un mur
     else :
-
         return False
 
 
 
-def concatenation(L1,L2):
-    # Sert juste à tester le code
-
-    if len(L1) == len(L2):
-        res=[]
-        for i in range(len(L1)):
-            res.append([L1[i],L2[i]])
-    return res
-
 
 
 def booleanHist(L):
-    # Permets de préparer des données pour faire un histogramme statistiques, sert seulement pour faire des tests statistiques
-    # L est de la forme [[float0,boolean0],[float1,boolean1], etc.]
+    """
+    - L : Liste,
 
+    L est de la forme [[float0,boolean0],[float1,boolean1], ...]
+
+
+
+    Permet de préparer des données pour faire un histogramme statistiques
+    Utilisable pour des étudier les statistiques
+
+    renvoie le couple de triplet [varMaxTrue,varMoyTrue/nbr,varMinTrue],[varMaxFalse,varMoyFalse/nbr,varMinFalse
+    (notation : varMaxTrue = variance maximale tel qu'un mur est détecté)
+    """
     varMaxFalse = 0
     varMinFalse = 10
     varMoyFalse = 0
@@ -90,13 +99,19 @@ def booleanHist(L):
             varMaxFalse = max(varMaxFalse,L[i][0])
             varMinFalse = min(varMinFalse,L[i][0])
             varMoyFalse += L[i][0]
+
     return [varMaxTrue,varMoyTrue/nbr,varMinTrue],[varMaxFalse,varMoyFalse/nbr,varMinFalse]
 
 
 
 
+"""
+def concatenation(L1,L2):
+    # Sert juste à tester le code
 
-
-
-
-
+    if len(L1) == len(L2):
+        res=[]
+        for i in range(len(L1)):
+            res.append([L1[i],L2[i]])
+    return res
+"""
