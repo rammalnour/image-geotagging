@@ -94,25 +94,19 @@
       let indice = arr.indexOf(max)
       let OUTPUT = Lregions[indice];
 
+        document.getElementById('resultat').innerHTML = OUTPUT;
       for (var i = 0; i < Lregions.length; i++) {
         if(Lregions[i] == OUTPUT) {
-          $(".france-map").prop('src','./style/img/'+OUTPUT);
+          $(".france-map").prop('src','./style/img/'+OUTPUT+'.png');
         }
       }
 
-      $("#resultat").innerHTML = OUTPUT;
-      $( "#book" ).animate({
-        color: black,
-      }, 5000);
+      
+      //$( "#book" ).animate({
+        //color: "black",
+      //}, 5000);
 
 
-      /*
-      const max = Math.max(res);  
-      const z = res.indexOf(max);
-      console.log(String(z));
-      console.log(ListeDep[z]);
-      document.write(ListeDep[z]);
-      */
 
       return res
     };
