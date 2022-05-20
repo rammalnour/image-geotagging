@@ -10,22 +10,41 @@ from skimage import io
 
 
 def convuLocal(portionImage,filtre):
-    # Fait le produit le convolution entre deux matrices de mêmes dimensions
+    """
+    - portionImage : np.ndarray
+    - filtre : np.ndarray
 
-    n,p = np.shape(portionImage)
-    somme = 0
-    if(n,p == np.shape(filtre)):
+    - Génère ValueError si les matrices ne sont pas de même taille
 
+    Renvoie le produit le convolution entre les deux matrices
+    """
+
+
+    if np.shape(portionImage)!=np.shape(filtre):
+        raise ValueError("Matrices de dimensions différentes")
+
+    else:
+        n,p = np.shape(portionImage)
+        somme = 0
         for i in range(n):
             for j in range(p):
                 somme += filtre[i][j]*portionImage[i][j]
-    return somme
+
+        return somme
 
 
 
 def convuProduct(image):
-    # Dans le cas où dimFiltre = 3
+    """
+    - image : np.ndarray de dimension n,p
 
+    renvoie le produit de convolution de image par le filtre f de dim(3x3)
+
+    f = -1, 0, 1,
+        -1, 0, 1,
+        -1, 0, 1,
+
+    """
     n,p = np.shape(image)
 
     dimFiltre = 3                           # Filtre est de la forme :
@@ -52,32 +71,3 @@ def convuProduct(image):
     for i in range(1,n-1):
         L.append(matrice[i][1:-1])
     return np.array(L)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
