@@ -1,0 +1,147 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Frégo le BOT</title>
+    <link rel="stylesheet" href="style/CSS/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <!----------------------------------------------------------------------------------
+                MAIN PAGE
+        ------------------------------------------------------------------------------------>
+        <div class="main-page">
+            <a class="go-to-doc" href="./Docu/index.html">DOCUMENTATION</a>
+            <div class="title-container">
+                <a class="ball left" id="button1" href="#page2">
+                    <h2>Contact</h2>
+                </a>
+                <a class="ball center" href="AI.html">
+                    <h2>Run the IA</h2>
+                </a>
+                <a class="ball right" id="button2" href="#page1">
+                    <h2>About us</h2>
+                </a>
+            </div>
+            <div class="down-button" id="move">
+                <div id=fleche_up>
+                    <div id=button_reculer>
+                        <div id=button_reculer2>
+                        </div>
+                    </div>
+                </div>
+                <div id="triangle"></div>
+            </div>
+        </div>
+        <!----------------------------------------------------------------------------------
+                ABOUT US 
+        ------------------------------------------------------------------------------------>
+        <div class="about-us-page" id="page1">
+            <div class="about-us-title">ABOUT US</div>
+            <div class="container-text container-text-up">
+                <div class="text-container">
+                    <p>We have all found ourselves, at least once, looking at a picture wandering were it was taken. Up
+                        until now no app is able to guess the location of an image based on image data. Here’s where we
+                        come in ! We are a group of five engineering students at Télécom SudParis who worked on the
+                        development of an image geoguessing AI that can tell you in which department your image was
+                        taken once you upload it into the website.</p><br>
+                    <p>Geolocation can be defined as the identification or estimation of real-world geographic location
+                        using location based data.The location based data used for geolocation includes but is not
+                        limited to satellite images, sensor data and so on.</p>
+                </div>
+                <div class="image-container">
+                    <img src="./style/img/noud.jpg" class="img-us">
+                </div>
+            </div>
+            <div class="container-text container-text-down">
+                <div class="image-container">
+                    <img src="./style/img/ia.jpg" class="img-us">
+                </div>
+                <div class="text-container">
+                    <p>Humans are not the best at guessing locations based on sensor data. But when it comes to location
+                        based image data, well travelled humans perform fairly well at guessing the location of where
+                        the image was taken. With google street view, it is now possible to obtain image data from most
+                        location in France. The game Geoguessr from which our project found its inspiration, presents
+                        street view data to human players who attempt to guess the location of the street view image.
+                        That is precisely what we attempted doing, except there is only one player playing the game, our
+                        AI.</p>
+                </div>
+            </div>
+        </div>
+        <!----------------------------------------------------------------------------------
+                CONTACT PAGE 
+        ------------------------------------------------------------------------------------>
+        <div class="contact-page" id="page2">
+            <div class="contact-header">
+                <div class="contact-line-left"></div>
+                <div class="contact-title-container">
+                    <div class="contact-title">THE CREW</div>
+                </div>
+                <div class="contact-line-right"></div>
+            </div>
+            <div class="photo-container">
+                <div class="photo">
+                    <img src="./style/img/photos/theo.jpg" class="photo-member">
+                    <div class="name-text-zone">
+                        <p>Théophile Schumtz</p>
+                    </div>
+                    <div class="title-text-zone">DATA CLEANER</div>
+                    <div class="mail-text-zone">theophile.schumtz@telecom-sudparis.eu</div>
+                </div>
+                <div class="photo">
+                    <img src="./style/img/photos/Pierre.jpg" class="photo-member">
+                    <div class="name-text-zone">
+                        <p>Pierre Domachowski</p>
+                    </div>
+                    <div class="title-text-zone">GRAPHIC DESIGNER</div>
+                    <div class="mail-text-zone">pierre.domachowski@telecom-sudparis.eu</div>
+                </div>
+                <div class="photo">
+                    <img src="./style/img/photos/nath.jpg" class="photo-member">
+                    <div class="name-text-zone">
+                        <p>Nathan Feret</p>
+                    </div>
+                    <div class="title-text-zone">PROJECT MANAGER</div>
+                    <div class="mail-text-zone">nathan.feret@telecom-sudparis.eu</div>
+                </div>
+                <div class="photo">
+                    <img src="./style/img/photos/nour.jpg" class="photo-member">
+                    <div class="name-text-zone">
+                        <p>Nour Rammal</p>
+                    </div>
+                    <div class="title-text-zone">AI DEVELOPER</div>
+                    <div class="mail-text-zone">nour.rammal@telecom-sudparis.eu</div>
+                </div>
+                <div class="photo">
+                    <img src="./style/img/photos/charles.jpg" class="photo-member">
+                    <div class="name-text-zone">
+                        <p>Charles Meyer</p>
+                    </div>
+                    <div class="title-text-zone">WEB DESIGNER</div>
+                    <div class="mail-text-zone">charles.meyer@telecom-sudparis.eu</div>
+                </div>
+            </div>
+            <div class="contact-bottom"></div>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script>
+            $("#move").click(function () {
+                $('html, body').animate({
+                    'scrollTop': $("#page1").offset().top
+                }, 600, 'swing');
+            });
+            $(document).ready(function () {
+                $('a[href^="#"]').on('click', function (e) {
+                    var target = this.hash;
+                    var $target = $(target);
+                    //var heightRemov = $(".header-container").height()
+                    $('html, body').animate({
+                        'scrollTop': $target.offset().top
+                    }, 600, 'swing');
+                });
+            });
+        </script>
+</body>
+
+</html>

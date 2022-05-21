@@ -1,0 +1,372 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "hack", sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+.container {
+  height: 100%;
+  width: 100%;
+}
+
+@font-face {
+  font-family: "hack";
+  src: url("../font/hack/Hack-Bold.ttf");
+}
+
+@font-face {
+  font-family: "hackR";
+  src: url("../font/hack/Hack-Regular.ttf");
+}
+
+@font-face {
+  font-family: "title";
+  src: url("../font/bogart/Bogart-Bold-Italic-trial.ttf");
+}
+
+@font-face {
+  font-family: "text-classic";
+  src: url("font/bogart/OpenSerif-Book.ttf");
+}
+
+h2 {
+  font-family: "title", sans-serif;
+}
+
+/***********************************************
+             MAIN PAGE CSS
+************************************************/
+.main-page {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  background-color: #DBC2CF;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.title-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  /* width: ; */
+}
+
+.ball {
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #EEEEEE;
+  font-size: 40;
+  cursor: pointer;
+  font-family: "title", sans-serif;
+}
+
+.left,
+.right {
+  height: 400px;
+  width: 400px;
+  background-size: auto 400px;
+  transition-duration: 0.2s;
+}
+
+.left {
+  transform: translateX(30%);
+  background-image: url(../img/left-img2.jpg);
+}
+
+.left h2 {
+  font-size: 60px;
+  transform: translateX(-20%);
+}
+
+.left:hover {
+  height: 410px;
+  width: 410px;
+  background-size: auto 410px;
+}
+
+.right {
+  transform: translateX(-30%);
+  background-image: url(../img/right-img.jpg);
+}
+
+.right h2 {
+  font-size: 60px;
+  transform: translateX(20%);
+}
+
+.right:hover {
+  height: 410px;
+  width: 410px;
+  background-size: auto 410px;
+}
+
+.center {
+  height: 500px;
+  width: 500px;
+  border: solid 25px #DBC2CF;
+  background-image: url(../img/center-img.jpg);
+  background-size: auto 500px;
+  z-index: 1;
+  transition-duration: 0.2s;
+}
+
+.center h2 {
+  font-size: 85px;
+}
+
+.center:hover {
+  height: 510px;
+  width: 510px;
+  background-size: auto 510px;
+}
+
+.down-button {
+  position: absolute;
+  padding: 5;
+  left: 50%;
+  bottom: 10%;
+  duration: 1s;
+  cursor: pointer;
+  transform: rotate(180deg) translate3d(50%, -100%, 0);
+}
+
+.down-button:hover {
+  color: red;
+}
+
+#fleche_up {
+  width: 125px;
+  height: 70;
+  position: relative;
+  top: 35;
+  transition-duration: 0.2s;
+  overflow-y: hidden;
+}
+
+#fleche_up:hover {
+  transition-duration: 0.2s;
+  top: 25;
+  cursor: pointer;
+}
+
+#button_reculer {
+  left: 20;
+  top: 20;
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  background-color: #DBC2CF;
+  transform: rotate(45deg);
+  z-index: 0;
+  border-top: solid black 4px;
+  border-left: solid black 4px;
+}
+
+#button_reculer2 {
+  border-top: solid black 4px;
+  border-left: solid black 4px;
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  background-color: #DBC2CF;
+  width: 48px;
+  height: 48px;
+}
+
+.go-to-doc {
+  position: absolute;
+  height: 10%;
+  width: 11%;
+  background-color: white;
+  right: 7%;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2vw;
+  transform: translateY(40%);
+  transition-duration: 0.5s;
+  border: 1px solid #9FA2B2;
+  color: black;
+}
+
+.go-to-doc:hover {
+  transform: translateY(5%);
+}
+
+/***********************************************
+             ABOUT US PAGE CSS
+************************************************/
+
+.about-us-page {
+  height: 100%;
+  width: 100%;
+  background-color: #EDEDED;
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.about-us-title {
+  position: absolute;
+  margin: 10px;
+  font-family: "title", sans-serif;
+  font-size: 6vw;
+  cursor: default;
+}
+
+.container-text {
+  width: 78%;
+  height: 30%;
+  position: absolute;
+  top: 30%;
+  display: flex;
+  justify-content: space-between;
+  cursor: default;
+}
+
+.container-text-up {
+  top: 20%;
+}
+
+.image-container {
+  width: 45%;
+}
+
+.container-text-down {
+  top: 60%;
+}
+
+.img-us {
+  height: 100%;
+  width: 100%;
+}
+
+.text-container {
+  width: 45%;
+  text-align: justify;
+  text-justify: inter-word;
+  font-size: 1.1vw;
+}
+
+.text-container p {
+  font-family: "text-classic", sans-serif;
+}
+
+/***********************************************
+             CONTACT PAGE CSS
+************************************************/
+
+.contact-page {
+  height: 100%;
+  width: 100%;
+  background-color: #16262E;
+  position: relative;
+}
+
+.photo-container {
+  position: relative;
+  top: 34%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 85%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: default;
+}
+
+.photo {
+  height: 390px;
+  width: 260px;
+  transition-duration: 0.5s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+}
+
+.photo:hover {
+  background-color: #2E4756;
+}
+
+.photo-member {
+  width: 150px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.name-text-zone {
+  height: 80px;
+  font-size: 30px;
+  margin-bottom: 5px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  color: #ECECEC;
+}
+
+.title-text-zone {
+  font-size: 23;
+  margin-bottom: 15px;
+  color: white;
+}
+
+.mail-text-zone {
+  font-size: 10.5px;
+  color: #CCCCCC;
+  font-family: "hackR", sans-serif;
+}
+
+.contact-bottom {
+  position: absolute;
+  bottom: 0;
+  height: 70px;
+  width: 100%;
+  background-color: #2E4756;
+}
+
+.contact-header {
+  position: absolute;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.contact-line-left {
+  position: relative;
+  background-color: white;
+  height: 40px;
+  width: 5%;
+  top: 8.5%;
+}
+
+.contact-title-container {
+  width: 40%;
+  height: 30%;
+}
+
+.contact-title {
+  color: #EEEEEE;
+  font-size: 6.7vw;
+  font-family: "title", sans-serif;
+  cursor: default;
+}
+
+.contact-line-right {
+  position: relative;
+  background-color: white;
+  height: 40px;
+  width: 55%;
+  top: 8.5%;
+}
