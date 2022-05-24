@@ -74,10 +74,10 @@ nbmax=19999
 pathimg="../input/imagesfrance/"
 pathinfo="../input/infosfrance/Infos/"
 
-
+Lx=[]
+Ly=[]
   for batch in range(0,nbmax,step):
-      Lx=[]
-      Ly=[]
+
       for i in range(batch,batch+step):
           try:
               img0=Image.open(pathimg+"img{}.png".format(i))
@@ -98,11 +98,14 @@ pathinfo="../input/infosfrance/Infos/"
       Ly=np.array(Ly)
 
       print(Ly.shape)
-      if len(Ly)>0:
+      if len(Ly)!=0:
             geoModel.fit(Lx,Ly,batch_size=5)
             del Lx
             del Ly
             gc.collect()
+            Lx=[]
+            Ly=[]
+            
             
 
 !pip install tensorflowjs
