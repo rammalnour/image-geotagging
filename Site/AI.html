@@ -96,24 +96,13 @@
 
       for (var i = 0; i < Lregions.length; i++) {
         if(Lregions[i] == OUTPUT) {
-          $(".france-map").prop('src','./style/img/'+OUTPUT);
+          $(".france-map").prop('src','./style/img/'+OUTPUT+".png");
         }
       }
-
-      $("#resultat").innerHTML = OUTPUT;
-      $( "#book" ).animate({
-        color: black,
-      }, 5000);
+         document.getElementById("resultat").innerHTML = OUTPUT;
 
 
-      /*
-      const max = Math.max(res);  
-      const z = res.indexOf(max);
-      console.log(String(z));
-      console.log(ListeDep[z]);
-      document.write(ListeDep[z]);
-      */
-
+    
       return res
     };
 
@@ -128,7 +117,7 @@
       const MyImage2 = tf.reshape(MyImage, [1, 300, 600, 3]);
 
       res = func(MyImage2);
-      //console.log(res)
+ 
       return res
     };
 
