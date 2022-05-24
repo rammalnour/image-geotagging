@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+
+<head>
+  <meta charset="utf-8" />
+  <title>Frégo le BOT</title>
+  <link rel="stylesheet" href="./style/CSS/styleAI.css">
+  <link rel="stylesheet" href="./style/CSS/style.css">
+</head>
+
+<body>
+  <div class="container ia-page">
+    <div class="about-us-title ia-title">THE AI</div>
+    <a class="return-button" href="index.html">GO BACK TO WEBSITE</a>
+    <div class="left-page-container">
+      <label class="guide-label">The firt step is to upload an image about a france landscape.</label>
+      <div class="img-selector-container">
+        <canvas id=c width=600 height=300 class="img-displayer"></canvas>
+        <label class="file-upload" class="button-img">
+          <input type=file id="IAImage">
+          UPDATE IMAGE
+        </label>
+      </div>
+      <label class="guide-label2">The second step is to launch the AI and then magic happens.</label>
+      <input type="button" id="startIaButton" value="LAUNCH AI" class="launchAI-button">
+    </div>
+    <div class="right-page-container">
+      <div class="france-container">
+        <img src="./style/img/france map.png" class="france-map">
+        <h1 class="result-displayer">RESULT: <span id="resultat"></span></h1>
+      </div>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@2.0.0/dist/tf.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    var res = "";
+
+    $("#startIaButton").click(function () {
+      StartIA()
+    });
+
+    //$(document).ready(function(){
+
+    window.URL = window.URL || window.webkitURL;
+    document.querySelector("input").onchange = function (e) {
+
+      var file = e.target.files[0],                  // reference first file BLOB
+        url = URL.createObjectURL(file),           // create Object URL
+        img = new Image();                         // create image object
+      img.src = url;                               // convertion file to image
+
+      img.onload = function () {
+        c.getContext("2d").drawImage(img, 0, 0);  // draw image onto canvas 
+      };
+
+    };
+
+    //----------------------------------------------------------------------
+    //load le model et prédit le résultat de l'image et renvoie le résultat
+    //----------------------------------------------------------------------
+    let func = async function (MyImage2) {
+
+      const path_model = "./ModelJS0/model.json";
+      let model = await tf.loadLayersModel(path_model);
+      console.log(MyImage2)
+      res = model.predict(MyImage2);
+      let strRes = res.toString();
+      const Lregions = [
+        "Auvergne-Rhône-Alpes",
+        "Bourgogne-Franche-Comté",
+        "Bretagne",
+        "Centre-Val de Loire",
+        "Grand Est",
+        "Hauts-de-France",
+        "Normandy",
+        "Nouvelle-Aquitaine",
+        "Occitanie",
+        "Pays de la Loire",
+        "Provence-Alpes-Côte d'Azur",
+        "Île-de-France"];
+
+      let region = strRes;
+      region = region.split(",")
+      arr = [];
+      let v0 = region[0].split("     ")[1].slice(2, -1);
+
+      arr.push(parseFloat(v0));
+
+      for (let i = 1; i < 12; i++) {
+        arr.push(parseFloat(region[i].split(" ")[1]));
+      };
+
+      let max = Math.max(...arr);
+      let indice = arr.indexOf(max)
+      let OUTPUT = Lregions[indice];
+
+      for (var i = 0; i < Lregions.length; i++) {
+        if(Lregions[i] == OUTPUT) {
+          $(".france-map").prop('src','./style/img/'+OUTPUT);
+        }
+      }
+
+      $("#resultat").innerHTML = OUTPUT;
+      $( "#book" ).animate({
+        color: black,
+      }, 5000);
+
+
+      /*
+      const max = Math.max(res);  
+      const z = res.indexOf(max);
+      console.log(String(z));
+      console.log(ListeDep[z]);
+      document.write(ListeDep[z]);
+      */
+
+      return res
+    };
+
+    //----------------------------------------------------------------------
+    // appelle la fonction asynchrone en appuyant sur le bouton
+    //----------------------------------------------------------------------
+    function StartIA() {
+      var idata = c.getContext('2d').getImageData(0, 0, 600, 300);
+
+
+      const MyImage = tf.browser.fromPixels(idata);
+      const MyImage2 = tf.reshape(MyImage, [1, 300, 600, 3]);
+
+      res = func(MyImage2);
+      //console.log(res)
+      return res
+    };
+
+      //});
+
+  </script>
+</body>

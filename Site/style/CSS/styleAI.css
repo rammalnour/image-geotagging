@@ -1,0 +1,150 @@
+a,
+a:hover,
+a:focus,
+a:active {
+    text-decoration: none;
+    color: inherit;
+}
+
+.img-displayer {
+    border: dashed 2px black;
+}
+
+.button-img {
+    width: 600px;
+    height: 50px;
+}
+
+.img-selector-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    height: 350px;
+    top: 20%;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.file-upload {
+    border: 1px solid #9FA2B2;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+    background-color: white;
+    transition-duration: 0.4s;
+    text-align: center;
+    padding: 20px;
+    font-size: 1.5vw;
+}
+
+.file-upload:hover {
+    background-color: #DBC2CF;
+    color: #3C7A89;
+}
+
+.left-page-container {
+    position: relative;
+    background-color: #EDEDED;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 40%;
+    height: 100%;
+}
+
+.right-page-container {
+    position: relative;
+    background-color: #EDEDED;
+    display: flex;
+    width: 60%;
+    height: 100%;
+}
+
+.ia-page {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.ia-title {
+    position: absolute;
+    z-index: 4;
+}
+
+.launchAI-button {
+    position: absolute;
+    top: 80%;
+    cursor: pointer;
+    border: 1px solid #9FA2B2;
+    background-color: white;
+    transition-duration: 0.4s;
+    text-align: center;
+    padding: 20px;
+    font-size: 1.5vw;
+    width: 80%;
+}
+
+.launchAI-button:hover {
+    background-color: #DBC2CF;
+    color: #3C7A89;
+}
+
+.france-map {
+    position: absolute;
+    top: 17%;
+    width: 100%;
+    height: 100%;
+}
+
+.france-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    left: 16%;
+    height: 75%;
+    width: 57%;
+}
+
+.return-button {
+    position: absolute;
+    top: 10px;
+    cursor: pointer;
+    transition-duration: 0.5s;
+    z-index: 4;
+}
+
+.return-button:hover {
+    color: #DBC2CF;
+}
+
+.result-displayer {
+    position: absolute;
+    top: 115%;
+    cursor: default;
+    font-size: 2vw;
+}
+
+.guide-label {
+    top: 17%;
+    position: relative;
+    font-family: "hackR", sans-serif;
+    font-size: 1vw;
+    width: 80%;
+}
+
+.guide-label2 {
+    top: 73%;
+    position: absolute;
+    font-family: "hackR", sans-serif;
+    font-size: 1vw;
+    width: 80%;
+}
+
+#resultat {
+    color: none;
+}
