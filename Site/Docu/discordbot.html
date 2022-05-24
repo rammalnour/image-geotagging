@@ -1,0 +1,221 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>discordbot &#8212; Image GeoGuessing 1.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="getdatabase" href="getdatabase.html" />
+    <link rel="prev" title="datacleaning" href="datacleaning.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="discordbot">
+<h1>discordbot<a class="headerlink" href="#discordbot" title="Permalink to this headline">¶</a></h1>
+<section id="fonctions-de-mise-a-jour-de-score">
+<h2>Fonctions de mise a jour de score<a class="headerlink" href="#fonctions-de-mise-a-jour-de-score" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="DiscordBot39.get_score">
+<span class="sig-prename descclassname"><span class="pre">DiscordBot39.</span></span><span class="sig-name descname"><span class="pre">get_score</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#DiscordBot39.get_score" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li><p>path : String</p></li>
+<li><p>user : discord.user.User</p></li>
+</ul>
+<p>renvoie le score de “user” dans la base de données placée en “path”</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="DiscordBot39.set_score">
+<span class="sig-prename descclassname"><span class="pre">DiscordBot39.</span></span><span class="sig-name descname"><span class="pre">set_score</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">score</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#DiscordBot39.set_score" title="Permalink to this definition">¶</a></dt>
+<dd><p>“</p>
+<ul class="simple">
+<li><p>path : String</p></li>
+<li><p>user : discord.user.User</p></li>
+<li><p>score : int</p></li>
+</ul>
+<p>fixe le score de ‘user’ à la valeur ‘score’ dans la bdd placée en ‘path’</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="DiscordBot39.update">
+<span class="sig-prename descclassname"><span class="pre">DiscordBot39.</span></span><span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">add</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#DiscordBot39.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>”
+- path : String
+- user : discord.user.User
+- add : int</p>
+<p>ajoute “add” au score de “user” dans la BDD placée en “path”
+appelle get_score et set_score</p>
+</dd></dl>
+
+</section>
+<section id="communication-avec-l-ia">
+<h2>Communication avec l’ia<a class="headerlink" href="#communication-avec-l-ia" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="DiscordBot39.getloc">
+<span class="sig-prename descclassname"><span class="pre">DiscordBot39.</span></span><span class="sig-name descname"><span class="pre">getloc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#DiscordBot39.getloc" title="Permalink to this definition">¶</a></dt>
+<dd><p>num : int
+num doit être compris entre 0 et 99</p>
+<p>renvoie l’indice de la région associé au numéro num</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="DiscordBot39.get_REG_IA">
+<span class="sig-prename descclassname"><span class="pre">DiscordBot39.</span></span><span class="sig-name descname"><span class="pre">get_REG_IA</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#DiscordBot39.get_REG_IA" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li><p>path : String</p></li>
+</ul>
+<p>path contient le chemin d’accès a l’image qu’on soumet a l’IA</p>
+<p>renvoie la région correspondant au choix de l’IA</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="headless_browser_vm.GetRepIA">
+<span class="sig-prename descclassname"><span class="pre">headless_browser_vm.</span></span><span class="sig-name descname"><span class="pre">GetRepIA</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#headless_browser_vm.GetRepIA" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li><p>path : String</p></li>
+</ul>
+<p>Crée un browser en mode headless ( sans interface graphique)
+charge la page et upload l’image située au chemin path
+renvoie la liste contenant les probas de chaque région</p>
+</dd></dl>
+
+<p>Pour lancer une partie de GeoGuessing, tapez ??play, et patientez que l’image ainsi que l’ia chargent
+a l’etape 0, une image est chosie aleatoirement parmi 100, et l’ia fait sa prediction
+pour tenter de deviner la region de l’image, tapez ??guess suivi du nom de la region
+Si la reponse est correcte, le score du joueur qui a bien repondu est augmente de 1</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="DiscordBot39.geoguess">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">DiscordBot39.</span></span><span class="sig-name descname"><span class="pre">geoguess</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stage</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#DiscordBot39.geoguess" title="Permalink to this definition">¶</a></dt>
+<dd><p>msg : discord.message.Message
+stage : int (0 ou 1)</p>
+<p>lance une partie de geoGuess</p>
+</dd></dl>
+
+</section>
+<section id="affichage-de-score-et-envoi-de-messages">
+<h2>Affichage de score et envoi de messages<a class="headerlink" href="#affichage-de-score-et-envoi-de-messages" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="DiscordBot39.Confirm">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">DiscordBot39.</span></span><span class="sig-name descname"><span class="pre">Confirm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">txt</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#DiscordBot39.Confirm" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li><p>txt : String</p></li>
+<li><p>msg : discord.message.Message</p></li>
+</ul>
+<p>envoie le message ‘txt’ dans le canal du message recu</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="DiscordBot39.showLeaderboard">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">DiscordBot39.</span></span><span class="sig-name descname"><span class="pre">showLeaderboard</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">msg</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nblines</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#DiscordBot39.showLeaderboard" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li><p>path : String, chemin de la BDD</p></li>
+<li><p>msg : discord.message.Message</p></li>
+<li><p>nblines : int, nombre de lignes du tableau a afficher</p></li>
+</ul>
+<p>affiche le Leaderboard par odre décroissant de score
+(score = nombre de réussite au jeu geoGuess)</p>
+</dd></dl>
+
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">Image GeoGuessing</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="guide.html">Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datacleaning.html">datacleaning</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">discordbot</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#fonctions-de-mise-a-jour-de-score">Fonctions de mise a jour de score</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#communication-avec-l-ia">Communication avec l’ia</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#affichage-de-score-et-envoi-de-messages">Affichage de score et envoi de messages</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="getdatabase.html">getdatabase</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="datacleaning.html" title="previous chapter">datacleaning</a></li>
+      <li>Next: <a href="getdatabase.html" title="next chapter">getdatabase</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2022, Nathan FERET, Nour Rammal, Théophile SCHMUTZ, Charles MEYER, Pierre DOMACHOWSKI.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.5.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/discordbot.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

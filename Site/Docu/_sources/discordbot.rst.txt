@@ -1,0 +1,36 @@
+discordbot
+=======
+
+Fonctions de mise a jour de score
+--------
+
+.. autofunction:: DiscordBot39.get_score
+
+.. autofunction:: DiscordBot39.set_score
+
+.. autofunction:: DiscordBot39.update
+
+Communication avec l'ia
+--------
+
+.. autofunction:: DiscordBot39.getloc
+
+.. autofunction:: DiscordBot39.get_REG_IA
+
+.. autofunction:: headless_browser_vm.GetRepIA
+ 
+Pour lancer une partie de GeoGuessing, tapez ??play, et patientez que l'image ainsi que l'ia chargent
+a l'etape 0, une image est chosie aleatoirement parmi 100, et l'ia fait sa prediction
+pour tenter de deviner la region de l'image, tapez ??guess suivi du nom de la region
+Si la reponse est correcte, le score du joueur qui a bien repondu est augmente de 1
+
+
+.. autofunction:: DiscordBot39.geoguess
+
+Affichage de score et envoi de messages
+--------
+
+.. autofunction:: DiscordBot39.Confirm
+
+.. autofunction:: DiscordBot39.showLeaderboard
+

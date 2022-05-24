@@ -1,0 +1,44 @@
+Guide
+=======
+
+Utilisation du Site
+--------------------
+Pour pouvoir utiliser Image Geoguessing, il suffit de se rendre sur notre site et suivre ces instructions.
+Une fois sur la page d’accueil il faut:
+
+•  cliquer sur le cercle “Run the AI”
+
+•  cliquer sur “Update Image” 
+
+•  ouvrir l’image à analyser dans les fichiers de l’ordinateur 
+
+•  cliquer sur “Launch AI” pour faire fonctionner l’IA
+
+•  constater la région dont est issue l’image a priori, qui s’affiche sous la carte de France
+
+
+Guide Utilisation du bot Discord
+-------------
+??ping pour pinger le bot (vérifier qu'il est en ligne)
+
+GeoGuessing
+-------------
+??play pour lancer une partie de geoguessing :
+Après quelques instants de chargement, une image s'affiche et le bot vous incite à deviner la région où la photo a été prise
+
+??guess Nom Region pour essayer de deviner, 
+Le bot vous ajoute un point si vous avez bon, et vous demande de recommencer sinon
+
+??stop pour abandonner la partie
+
+Scores
+----------
+
+??score pour connaitre son score (= son nombre de réussite au jeu geoGuessing)
+
+??score @someone pour connaitre son score
+
+??showleader N pour afficher le tableau des scores par ordre décroissant
+N est un entier positif qui détermine le nombre de lignes affichéessayer
+
+??help permet d'afficher la liste des commandes disponibles

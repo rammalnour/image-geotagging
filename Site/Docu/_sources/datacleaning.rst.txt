@@ -1,0 +1,31 @@
+datacleaning
+=======
+
+Documentation des fonctions qui ont servi a faire du preprocessing sur les ImageGeoGuessing
+
+Fonctions d'Histogrammes
+--------
+.. autofunction:: DisplayFunctions.imageHist
+
+
+.. autofunction:: DisplayFunctions.showGrey 
+    
+Detection de murs
+--------
+
+.. autofunction:: FiltragePhoto.detectWall
+
+
+.. autofunction:: FiltragePhoto.detectVar
+
+.. autofunction:: FiltragePhoto.booleanHist
+
+Fonctions de ProduitConvolution
+--------
+.. autofunction:: ProduitConvolution.convuLocal
+
+
+.. autofunction:: ProduitConvolution.convuProduct
+
+
+   

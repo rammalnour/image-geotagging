@@ -1,0 +1,204 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>datacleaning &#8212; Image GeoGuessing 1.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="discordbot" href="discordbot.html" />
+    <link rel="prev" title="Guide" href="guide.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="datacleaning">
+<h1>datacleaning<a class="headerlink" href="#datacleaning" title="Permalink to this headline">¶</a></h1>
+<p>Documentation des fonctions qui ont servi a faire du preprocessing sur les ImageGeoGuessing</p>
+<section id="fonctions-d-histogrammes">
+<h2>Fonctions d’Histogrammes<a class="headerlink" href="#fonctions-d-histogrammes" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="DisplayFunctions.imageHist">
+<span class="sig-prename descclassname"><span class="pre">DisplayFunctions.</span></span><span class="sig-name descname"><span class="pre">imageHist</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#DisplayFunctions.imageHist" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li><p>image : np.array</p></li>
+</ul>
+<p>Génère et affiche l’histogramme d’une image, qu’elle soit en nuance de gris ou en couleurs</p>
+<p>Est appelé par : showGrey</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="DisplayFunctions.showGrey">
+<span class="sig-prename descclassname"><span class="pre">DisplayFunctions.</span></span><span class="sig-name descname"><span class="pre">showGrey</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">boolean</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#DisplayFunctions.showGrey" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li><p>path : String, contient le chemin d’accès vers une image</p></li>
+<li><p>boolean : Bool, permet d’afficher ou non l’histogramme de l’image filtrée</p></li>
+</ul>
+</dd></dl>
+
+</section>
+<section id="detection-de-murs">
+<h2>Detection de murs<a class="headerlink" href="#detection-de-murs" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="FiltragePhoto.detectWall">
+<span class="sig-prename descclassname"><span class="pre">FiltragePhoto.</span></span><span class="sig-name descname"><span class="pre">detectWall</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seuil</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eps</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#FiltragePhoto.detectWall" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li><p>image : np.ndarray</p></li>
+<li><p>seuil : float</p></li>
+<li><p>eps : float</p></li>
+</ul>
+<p>renvoie un booleen valant True si l’image est un mur, selon un critère basé sur la prédominance d’une couleur sur les autres</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="FiltragePhoto.detectVar">
+<span class="sig-prename descclassname"><span class="pre">FiltragePhoto.</span></span><span class="sig-name descname"><span class="pre">detectVar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seuil</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#FiltragePhoto.detectVar" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li><p>image : np.ndarray</p></li>
+<li><p>seuil : float</p></li>
+</ul>
+<p>renvoie un booleen valant True si l’image est un mur, selon un critère basé sur la variance de l’image</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="FiltragePhoto.booleanHist">
+<span class="sig-prename descclassname"><span class="pre">FiltragePhoto.</span></span><span class="sig-name descname"><span class="pre">booleanHist</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">L</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#FiltragePhoto.booleanHist" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li><p>L : Liste,</p></li>
+</ul>
+<p>L est de la forme [[float0,boolean0],[float1,boolean1], …]</p>
+<p>Permet de préparer des données pour faire un histogramme statistiques
+Utilisable pour des étudier les statistiques</p>
+<p>renvoie le couple de triplet [varMaxTrue,varMoyTrue/nbr,varMinTrue],[varMaxFalse,varMoyFalse/nbr,varMinFalse
+(notation : varMaxTrue = variance maximale tel qu’un mur est détecté)</p>
+</dd></dl>
+
+</section>
+<section id="fonctions-de-produitconvolution">
+<h2>Fonctions de ProduitConvolution<a class="headerlink" href="#fonctions-de-produitconvolution" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="ProduitConvolution.convuLocal">
+<span class="sig-prename descclassname"><span class="pre">ProduitConvolution.</span></span><span class="sig-name descname"><span class="pre">convuLocal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">portionImage</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filtre</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ProduitConvolution.convuLocal" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li><p>portionImage : np.ndarray</p></li>
+<li><p>filtre : np.ndarray</p></li>
+<li><p>Génère ValueError si les matrices ne sont pas de même taille</p></li>
+</ul>
+<p>Renvoie le produit le convolution entre les deux matrices</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ProduitConvolution.convuProduct">
+<span class="sig-prename descclassname"><span class="pre">ProduitConvolution.</span></span><span class="sig-name descname"><span class="pre">convuProduct</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ProduitConvolution.convuProduct" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li><p>image : np.ndarray de dimension n,p</p></li>
+</ul>
+<p>renvoie le produit de convolution de image par le filtre f de dim(3x3)</p>
+<dl class="simple">
+<dt>f = -1, 0, 1,</dt><dd><p>-1, 0, 1,
+-1, 0, 1,</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">Image GeoGuessing</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="guide.html">Guide</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">datacleaning</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#fonctions-d-histogrammes">Fonctions d’Histogrammes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#detection-de-murs">Detection de murs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#fonctions-de-produitconvolution">Fonctions de ProduitConvolution</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="discordbot.html">discordbot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getdatabase.html">getdatabase</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="guide.html" title="previous chapter">Guide</a></li>
+      <li>Next: <a href="discordbot.html" title="next chapter">discordbot</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2022, Nathan FERET, Nour Rammal, Théophile SCHMUTZ, Charles MEYER, Pierre DOMACHOWSKI.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.5.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/datacleaning.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

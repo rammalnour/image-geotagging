@@ -1,0 +1,26 @@
+getdatabase
+=======
+
+
+.. autofunction:: GetDataBase_colab.sign_url
+
+Generation des requètes
+--------------------------
+.. autofunction:: GetDataBase_colab.getcos
+.. autofunction:: GetDataBase_colab.GetMetaRequete
+.. autofunction:: GetDataBase_colab.GetImage
+.. autofunction:: GetDataBase_colab.GetRequeteReverseGeo
+.. autofunction:: GetDataBase_colab.getaddress
+.. autofunction:: GetDataBase_colab.GetRequeteFromAddress
+
+Enregistrement des données sur google drive 
+---------------------
+.. autofunction:: GetDataBase_colab.saveInfo
+.. autofunction:: GetDataBase_colab.saveimg
+.. autofunction:: GetDataBase_colab.saveToDrive
+
+Creation Polygone
+-------------------    
+.. autofunction:: GetDataBase_colab.createPoly
+
+
