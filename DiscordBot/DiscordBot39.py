@@ -267,7 +267,7 @@ if __name__ == '__main__':
                 except ValueError:
                     await Confirm(msg, "Argument invalide ignoré")
 
-            await showLeaderboard(pathbddGeo, msg, nblines=lenght)
+            await showLeaderboard(path, msg, nblines=lenght)
 
         if command == "??score":
             if len(tmp) == 1:
