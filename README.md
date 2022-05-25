@@ -1,7 +1,7 @@
 # image-geotagging
 ## Contexte
 
-Développement d’une application mobile qui à une photo prise en France permet de déterminer une estimation de sa localisation. Cette estimation se fera grâce à une IA.
+Développement d’une application qui à une photo prise en France permet de déterminer une estimation de sa localisation. Cette estimation se fera grâce à une IA.
 
 ## Contributeurs 
 
