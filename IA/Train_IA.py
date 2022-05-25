@@ -91,14 +91,12 @@ Ly=[]
               Lx.append(np.array(img))
               Ly.append(transfo(indice,12))
 
-          except:
-              z=0
+          except: # il manque des images aores nettoyage mais c'est parfaitement normal
+              pass
 
-      Lx=np.array(Lx,dtype="float64")
-      Ly=np.array(Ly)
-
-      print(Ly.shape)
       if len(Ly)!=0:
+            Lx=np.array(Lx,dtype="float64")
+            Ly=np.array(Ly)
             geoModel.fit(Lx,Ly,batch_size=5)
             del Lx
             del Ly
