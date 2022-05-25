@@ -245,7 +245,7 @@ if __name__ == '__main__':
         # if not command
         if content[:2] != "??":
             return None
-        if content=="ping":
+        if command=="ping":
             await Confirm(msg,"Pong !")
 
         # geoguess
