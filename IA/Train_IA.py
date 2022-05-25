@@ -97,7 +97,7 @@ Ly=[]
       if len(Ly)!=0:
             Lx=np.array(Lx,dtype="float64")
             Ly=np.array(Ly)
-            geoModel.fit(Lx,Ly,batch_size=5)
+            geoModel.fit(Lx,Ly,batch_size=4)
             del Lx
             del Ly
             gc.collect()
