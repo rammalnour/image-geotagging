@@ -162,9 +162,6 @@ def getaddress(geodata):
       ok=False
       GoodLine=line
 
-  # possible UnboundLocalError si pas de formatted dans le fichier json
-  # on peut le traiter pour faire propre, sinon on laisse, ça arrive 1 fois/4000
-
   GoodLine=GoodLine.split(":") # on découpe juste le bout qui nous interesse
   GoodLine=GoodLine[1][2:-2]
   GoodLine=GoodLine.split(" ")
@@ -233,7 +230,6 @@ def main():
 
     print("Image : ",compteur , "Addresse : ", address)
     req=GetRequeteFromAddress(address) # on prend la street view
-    # (potentiels bugs ? nan tkt)
 
     img=GetImage(req) # on récup l'image
 
